@@ -5,11 +5,11 @@ namespace ClassAbstract.Models
     public class Locadora
     {
         [DisplayName("Código")]
-        public long? FilmeId { get; set; }
+        public long? LocadoraId { get; set; }
         public string Nome { get; set; }
 
-        [DisplayName("Quantidade")]
-        public string Quantidade { get; set; }
+        [DisplayName("Descricao")]
+        public string Descricao { get; set; }
     }
 }
 

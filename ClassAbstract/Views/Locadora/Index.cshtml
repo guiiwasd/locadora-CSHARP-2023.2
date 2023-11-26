@@ -14,7 +14,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FilmeId)
+                @Html.DisplayNameFor(model => model.LocadoraId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
@@ -26,15 +26,15 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FilmeId)
+                @Html.DisplayFor(modelItem => item.LocadoraId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.FilmeId }) |
-                @Html.ActionLink("Detalhes", "Details", new { id=item.FilmeId }) |
-                @Html.ActionLink("Deletar", "Delete", new { id=item.FilmeId })
+                @Html.ActionLink("Editar", "Edit", new { id=item.LocadoraId }) |
+                @Html.ActionLink("Detalhes", "Details", new { id=item.LocadoraId }) |
+                @Html.ActionLink("Deletar", "Delete", new { id=item.LocadoraId })
             </td>
         </tr>
 }

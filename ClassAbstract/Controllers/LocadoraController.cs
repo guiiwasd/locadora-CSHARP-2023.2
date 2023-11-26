@@ -24,7 +24,7 @@ namespace ClassAbstract.Controllers
         }
         [HttpPost] 
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Nome", "Quantidade")] Locadora locadora)
+        public async Task<ActionResult> Create([Bind("Nome", "Descricao")] Locadora locadora)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace ClassAbstract.Controllers
             {
                 return NotFound();
             }
-            var locadora = await _context.Locadoras.SingleOrDefaultAsync(i => i.FilmeId == id);
+            var locadora = await _context.Locadoras.SingleOrDefaultAsync(i => i.LocadoraId == id);
             if (locadora == null)
             {
                 return NotFound();
@@ -56,9 +56,9 @@ namespace ClassAbstract.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("FilmeId", "Nome", "Quantidade")] Locadora locadora)
+        public async Task<IActionResult> Edit(long? id, [Bind("LocadoraId", "Nome", "Descricao")] Locadora locadora)
         {
-            if (id != locadora.FilmeId)
+            if (id != locadora.LocadoraId)
             {
                 return NotFound();
             }
@@ -71,7 +71,7 @@ namespace ClassAbstract.Controllers
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
-                    if (!LocadoraExists(locadora.FilmeId))
+                    if (!LocadoraExists(locadora.LocadoraId))
                     {
                         return NotFound();
                     }
@@ -85,9 +85,9 @@ namespace ClassAbstract.Controllers
             return View(locadora);
         }
 
-        private bool LocadoraExists(long? filmeId)
+        private bool LocadoraExists(long? locadoraId)
         {
-            var locadora = _context.Locadoras.FirstOrDefault(i => i.FilmeId == filmeId);
+            var locadora = _context.Locadoras.FirstOrDefault(i => i.LocadoraId == locadoraId);
             if (locadora == null)
                 return false;
             return true;
@@ -98,7 +98,7 @@ namespace ClassAbstract.Controllers
             {
                 return NotFound();
             }
-            var locadora = await _context.Locadoras.SingleOrDefaultAsync(i => i.FilmeId == id);
+            var locadora = await _context.Locadoras.SingleOrDefaultAsync(i => i.LocadoraId == id);
             if (locadora == null)
             {
                 return NotFound();
@@ -111,7 +111,7 @@ namespace ClassAbstract.Controllers
             {
                 return NotFound();
             }
-            var locadora = await _context.Locadoras.SingleOrDefaultAsync(i => i.FilmeId == id);
+            var locadora = await _context.Locadoras.SingleOrDefaultAsync(i => i.LocadoraId == id);
             if (locadora == null)
             {
                 return NotFound();
@@ -123,7 +123,7 @@ namespace ClassAbstract.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id) 
         {
-            var locadora = await _context.Locadoras.SingleOrDefaultAsync(i => i.FilmeId == id);
+            var locadora = await _context.Locadoras.SingleOrDefaultAsync(i => i.LocadoraId == id);
             _context.Locadoras.Remove(locadora);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
