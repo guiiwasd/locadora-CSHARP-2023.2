@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ClassAbstract.Models.Locadora>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FilmeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilmeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id=item.FilmeId }) |
+                @Html.ActionLink("Detalhes", "Details", new { id=item.FilmeId }) |
+                @Html.ActionLink("Deletar", "Delete", new { id=item.FilmeId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
